@@ -3,25 +3,27 @@ words = ["dog","cat","bird","horse","fish"]
 
 def main(generated_word):
     #print(generated_word)
-    count = 1
-    print("I'm thinking of an animal. You have ", count, " chance to try.")
+    count = 3
+    print("I'm thinking of an animal. You have ", count, " chances to try.")
     guess = input("Can you guess what it is?\n")
-    if(check(guess, generated_word) == False):
-        print("Wrong! the word was",generated_word, ". Try again.")
+    if(check(guess, generated_word) == True):
+        print("You got it on the first try!")
     else:
-        print("You guessed right!");
-    '''while(count != 1 and check(guess, generated_word) == False):
-        count -= 1
-        print("Wrong. You have ", count, " guess/es left.")
-        next_guess = input("Guess again\n")
-        if(count == 1 and check(next_guess, generated_word) == False):
-            print("Game over! The word was ", generated_word)
-            break;
+        print("You guessed wrong!")
+        while(count>1):
+            count -= 1
+            print("You only have ", count, "guess/es left!")
+            next_guess = input("Guess again: ")
+            if(check(next_guess, generated_word) == True):
+                print("You guessed it!")
+                break
+            elif(check(next_guess, generated_word) == False and count !=0):
+                print("try again!")
         else:
-            print("You got it!")
-            break;
-    else:
-        print("You guessed right!")'''
+            print("Game over! The word was ", generated_word)
+                
+            
+                
 
 def check(guess, word):
     if(guess == word):
